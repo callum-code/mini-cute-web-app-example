@@ -1,0 +1,25 @@
+<!doctype html>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<title>Happy Form</title>
+
+<body>
+  <div class="container p-5">
+    <div class="row">
+      <div class="col">
+        <h1>Please enter in the following</h1>
+        <form method="post"  action="/submit_form">
+
+          {% for item in fields %}
+            <div class="form-group">
+              <label for="exampleInputEmail1">{{ item[2] }}</label>
+              <input class="form-control" id="form_input_{{ item[1] }}" name="{{ item[1] + "_" + item[0] }}" aria-describedby="emailHelp" placeholder="{{ item[2].split()[-1] }}">
+              <small id="form_helper_{{ item[1] }}" class="form-text text-muted">Think of something creative!</small>
+            </div>
+          {% endfor %}
+          <input type="hidden" id="data-containter" name="DataString" value="{{ some_data }}">
+          <button type="submit" class="btn btn-primary" value="Submit" method="post">Submit</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</body>
